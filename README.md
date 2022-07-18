@@ -1,11 +1,17 @@
-# This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Este proyecto se inició con [Create React App.](https://github.com/facebook/create-react-app)
 
 ## Instalación
 ***
 ```
-$ git clone https://example.com
-$ cd ../path/to/the/file
+$ git clone https://github.com/JaredPeralta/FrontEnd-ContentAdmin.git
 $ npm install
+```
+***
+
+## Ejecución
+
+***
+```
 $ npm start
 ```
 ***
