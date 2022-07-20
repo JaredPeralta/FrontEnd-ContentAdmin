@@ -4,6 +4,7 @@ import UserLogin from './Pages/UserLogin/UserLogin';
 import { CreateUser } from './Pages/CreateUser/CreateUser';
 import HomeUserContainer from './Pages/HomeUser/HomeUserContainer';
 import NoMatch from './Pages/404Page/404Page';
+import { Nosotros } from './Pages/Nosotros/Nosotros';
 
 function App() {
   return (

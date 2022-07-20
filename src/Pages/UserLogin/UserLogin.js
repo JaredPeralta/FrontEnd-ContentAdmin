@@ -20,6 +20,7 @@ const UserLogin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoginData(await login(data))
+        console.log('holaaaa')
         console.log(loginData)
     }
 

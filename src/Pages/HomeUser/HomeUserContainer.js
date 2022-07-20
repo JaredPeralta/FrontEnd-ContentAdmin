@@ -3,6 +3,7 @@ import HomeUser from "./HomeUser";
 import {UserContext} from "../../context/UserContext";
 import {Navigate} from "react-router-dom";
 
+
 import {URLS} from "../../assets/urls";
 import useFetchApi from "../../hooks/useFetchAPI";
 import PageLoading from "../../Components/PageLoading/PageLoading";
@@ -45,11 +46,9 @@ const HomeUserContainer = () => {
     }
     console.log(data)
     return (
-
-        <HomeUser
-            data={data}
-            onDeleteAssessment={handleDeleteAssessment}
-        />
+            <HomeUser 
+            data={data} 
+            onDeleteAssessment={handleDeleteAssessment}/>
     )
 }
 
