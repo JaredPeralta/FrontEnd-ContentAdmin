@@ -10,25 +10,14 @@ import PageLoading from "../../Components/PageLoading/PageLoading";
 
 const HomeUserContainer = () => {
 
-    const [{data, loading, error}, getData] = useFetchApi('/single-assessment/first-assessment', true)
-    const {isAuth} = useContext(UserContext)
+    // const [{data, loading, error}, getData] = useFetchApi('/single-assessment/first-assessment', true)
+    const {isAuth, error, loading} = useContext(UserContext)
 
     useEffect(() =>{
         console.log('antes de entrar a get data')
-        getData()
+        // getData()
     }, [])
 
-    const handleDeleteAssessment = async (email) => {
-        const response = await fetch(`${URLS.API}/single-assessment/first-assessment?email=${email}`,{
-            method: 'DELETE',
-            headers: {
-                Authorization: `Token ${localStorage.getItem('token')}`
-            }
-        })
-        const fetchData = await response.json()
-        //poner confirmacion
-        getData()
-    }
 
     if(!isAuth){
         return <Navigate to={'/'} />
@@ -44,11 +33,9 @@ const HomeUserContainer = () => {
         }
         return error
     }
-    console.log(data)
+
     return (
-            <HomeUser 
-            data={data} 
-            onDeleteAssessment={handleDeleteAssessment}/>
+            <HomeUser />
     )
 }
 

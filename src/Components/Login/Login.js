@@ -29,7 +29,7 @@ const Login = (props) => {
 
         <br></br>
 
-        <Button className={'btn my-btn-primary'}>
+        <Button className={'btn my-btn-primary'} onClick={props.onSubmit}>
           Login
         </Button>
 

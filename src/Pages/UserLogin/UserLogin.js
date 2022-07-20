@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useState, useContext} from "react";
 import {UserContext} from "../../context/UserContext";
 import Login  from "../../Components/Login/Login";
@@ -7,7 +7,6 @@ import './UserLogin.css'
 
 
 const UserLogin = () => {
-  //const isAuth = false;
   const {login , isAuth} = useContext(UserContext)
   const [loginData, setLoginData] = useState({});
 
@@ -16,11 +15,14 @@ const UserLogin = () => {
       password: ''
   })
 
+    useEffect(()=>{
+        console.log(process.env)
+    },[])
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoginData(await login(data))
-        console.log('holaaaa')
         console.log(loginData)
     }
 
