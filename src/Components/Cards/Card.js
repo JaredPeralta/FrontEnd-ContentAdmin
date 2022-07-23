@@ -19,10 +19,12 @@ const Card = ({ title, lista }) => {
   const [imageRender, setimageRender] = useState('');
   const [imageDelete, setimageDelete] = useState('');
   const [imageModify, setimageModify] = useState('');
+  const [imageTitle, setimageTitle] = useState('');
 
 
-  const handleView = (image) => {
-    setimageRender(image)
+  const handleView = (item) => {
+    setimageRender(item.image)
+    setimageTitle(item.id)
     setModalSeeShow(true);
   }
 
@@ -56,7 +58,7 @@ const Card = ({ title, lista }) => {
                 <div className='card-body'>
                 <Row key={item.key}>
                     <Col>
-                      <button className='btn btn-outline-primary' onClick={() => handleView(item.image)}>Ver</button>
+                      <button className='btn btn-outline-primary' onClick={() => handleView(item)}>Ver</button>
                     </Col>
                     <Col>
                       <button className='btn btn-outline-warning' onClick={() => handleModify(item)}>Actualizar</button>
@@ -82,6 +84,7 @@ const Card = ({ title, lista }) => {
         show={modalSeeShow}
         onHide={() => setModalSeeShow(false)}
         image={imageRender}
+        title={imageTitle}
       />
 
       <DeletModal

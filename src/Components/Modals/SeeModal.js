@@ -10,6 +10,9 @@ const SeeModal = (props) => {
       centered
     >
       <Modal.Header closeButton>
+        <Modal.Title>
+          {props.title}
+        </Modal.Title>
       </Modal.Header>
       <img src={props.image}></img>
     </Modal>
