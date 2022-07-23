@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import swal from 'sweetalert';
 
 const DeletModal = (props) => {
 
@@ -12,6 +13,12 @@ const DeletModal = (props) => {
       }
       contador++;
     })
+    swal({
+      title: "Imagen Eliminada",
+      //text: "You clicked the button!",
+      icon: "success",
+      button: "OK",
+    });
     props.onHide()
   }
 

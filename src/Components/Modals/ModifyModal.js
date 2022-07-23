@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useState , useRef } from 'react';
+import swal from 'sweetalert';
 
 const ModifyModal = (props) => {
 
@@ -27,12 +28,29 @@ const ModifyModal = (props) => {
   }
 
   const addImageDesktop = () => {
-    props.list.map((val) => {
-      if (val.id === props.id) {
-        val.image = imageDesktop;
-      }
-    })
-    props.onHide()
+    if(!imageDesktop){
+      swal({
+        title: "Arrastre una imagen al recuadro",
+        //text: "You clicked the button!",
+        icon: "warning",
+        button: "OK",
+      });
+      return
+    }else{
+      props.list.map((val) => {
+        if (val.id === props.id) {
+          val.image = imageDesktop;
+        }
+      })
+      swal({
+        title: "Imagen Actualizada",
+        //text: "You clicked the button!",
+        icon: "success",
+        button: "OK",
+      });
+      setImageDesktop('')
+      props.onHide()
+    }
   }
 
   return (
@@ -43,13 +61,21 @@ const ModifyModal = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <h1>Agregar Imagen</h1>
+        <h1>Actualizar Imagen</h1>
       </Modal.Header>
-
-        <p>Arrastrar una imagen desde el escritorio.</p>
-        <div ref={ref} onDragOver={permitirDrop} onDrop={drop} className="caja" id='caja'>
+      <div className="container mt-5">
+          <div className="card p-3">
+            <div className="row">
+              <h5>Arrastrar una imagen desde el escritorio</h5>
+              <div className="col-10">
+                <div ref={ref} onDragOver={permitirDrop} onDrop={drop} className="caja" id='caja'></div>
+              </div>
+              <div className="col-2">
+                <Button onClick={addImageDesktop} >Add</Button>
+              </div>
+            </div>
+          </div>
         </div>
-        <Button onClick={addImageDesktop} >Add</Button>
       <Modal.Footer>
         <Button variant='danger' onClick={props.onHide}>Close</Button>
       </Modal.Footer>

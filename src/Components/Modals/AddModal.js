@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useState , useRef } from 'react';
+import swal from 'sweetalert';
 import './add.css'
 
 const AddModal = (props) => {
@@ -37,7 +38,7 @@ const AddModal = (props) => {
   }
 
 
-  ///////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////// Usamos este 
 
   const ref = useRef(null);
 
@@ -59,11 +60,28 @@ const AddModal = (props) => {
 }
 
   const addImageDesktop = () => {
-    props.list.push({
-      id: props.list.length+1,
-      image: imageDesktop
-    })
-    props.onHide()
+    if(!imageDesktop){
+      swal({
+        title: "Arrastre una imagen al recuadro",
+        //text: "You clicked the button!",
+        icon: "warning",
+        button: "OK",
+      });
+      return
+    }else{
+      props.list.push({
+        id: props.list.length+1,
+        image: imageDesktop
+      })
+      swal({
+        title: "Imagen Agregada",
+        //text: "You clicked the button!",
+        icon: "success",
+        button: "OK",
+      });
+      setImageDesktop('')
+      props.onHide()
+    }
   }
 
 
@@ -75,7 +93,12 @@ const AddModal = (props) => {
 
   const addImg = () => {
     if(!add){
-      alert('Escriba el url de la imagen')
+      swal({
+        title: "Ingrese el URL de la imagen",
+        //text: "You clicked the button!",
+        icon: "warning",
+        button: "OK",
+      });
       return
     }else{
       console.log(add)
@@ -83,6 +106,13 @@ const AddModal = (props) => {
         id: props.list.length,
         image: add
       })
+      swal({
+        title: "Imagen Agregada",
+        //text: "You clicked the button!",
+        icon: "success",
+        button: "OK",
+      });
+      setAdd('')
       props.onHide()
     }
   }
@@ -119,14 +149,18 @@ const AddModal = (props) => {
                 <button onClick={sendHandler} type="button" className="btn btn-primary col-12">Add</button>
               </div>
             </div> */}
+            <div className="row">
+              <h5>Arrastrar una imagen desde el escritorio</h5>
+              <div className="col-10">
+                <div ref={ref} onDragOver={permitirDrop} onDrop={drop} className="caja" id='caja'></div>
+              </div>
+              <div className="col-2">
+                <Button onClick={addImageDesktop} >Add</Button>
+              </div>
+            </div>
           </div>
         </div>
 
-
-        <p>Arrastrar una imagen desde el escritorio.</p>
-        <div ref={ref} onDragOver={permitirDrop} onDrop={drop} className="caja" id='caja'>
-        </div>
-        <Button onClick={addImageDesktop} >Add</Button>
       <Modal.Footer>
         <Button variant='danger' onClick={props.onHide}>Close</Button>
       </Modal.Footer>
