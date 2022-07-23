@@ -21,7 +21,7 @@ const ReusableModal = (props) => {
   }
 
   const deleteImg = () => {
-    props.list.splice(props.imageDelete, 1)
+    props.list.splice(props.delete, 1)
     props.onHide()
   }
 

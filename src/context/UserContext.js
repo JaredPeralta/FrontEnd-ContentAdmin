@@ -30,13 +30,13 @@ function UserProvider({ children }) {
 
 
     const [token, setToken] = useState(() => {
-        const local = localStorage.getItem('token')
+        //const local = localStorage.getItem('token')
         return local ? local : ''
 
     });
 
     const [username, setUsername] = useState(() => {
-        const local = localStorage.getItem('username')
+        //const local = localStorage.getItem('username')
         return local ? local : null
     });
 

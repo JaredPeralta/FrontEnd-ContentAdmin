@@ -9,7 +9,6 @@ export const cards = [
   {
     id: 1,
     title: 'Banner Principal',
-    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
     lista: [
       {
         id: 1,
@@ -29,7 +28,6 @@ export const cards = [
   {
     id: 2,
     title: 'Clientes',
-    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
     lista: [
       {
         id: 1,
@@ -60,7 +58,6 @@ export const cards = [
   {
     id: 3,
     title: 'Aliados',
-    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
     lista: [
       {
         id: 1,

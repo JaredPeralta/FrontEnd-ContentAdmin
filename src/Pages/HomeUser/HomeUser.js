@@ -7,30 +7,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Cards  from '../../Components/Cards/Cards';
 
-const imagenes = [
-  {
-    id: 1,
-    url: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-  },
-  {
-    id: 2,
-    url: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-  },
-  {
-    id: 3,
-    url: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-  },
-  {
-    id: 4,
-    url: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-  },
-  {
-    id: 2,
-    url: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-  },]
-
-  // link de una imagen de perro
-
 
 const HomeUser = () => {
 
@@ -59,6 +35,18 @@ return (
     <NavBar />
     <div>
       <h1 className='title'>Home</h1>
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Donec euismod, nisl eget consectetur sagittis, nisl nisi
+      consectetur nisl, euismod nisl nisi euismod nisl.
+      Donec euismod, nisl eget consectetur sagittis, nisl nisi
+      consectetur nisl, euismod nisl nisi euismod nisl.
+      Donec euismod, nisl eget consectetur sagittis, nisl nisi
+      consectetur nisl, euismod nisl nisi euismod nisl.
+      Donec euismod, nisl eget consectetur sagittis, nisl nisi
+      consectetur nisl, euismod nisl nisi euismod nisl.
+      Donec euismod, nisl eget consectetur sagittis, nisl nisi
+      </p>
       <Cards />
     </div>
   </div>
