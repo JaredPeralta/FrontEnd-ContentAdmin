@@ -66,8 +66,8 @@ const AddModal = (props) => {
   const addImageDesktop = () => {
     if(!imageDesktop){
       swal({
-        title: "Arrastre una imagen al recuadro",
-        //text: "You clicked the button!",
+        title: "Seleccione O arrastre una imagen al recuadro",
+        //text: "You clickd the button!",
         icon: "warning",
         button: "OK",
       });
@@ -153,6 +153,7 @@ const AddModal = (props) => {
                 {/* <button onClick={sendHandler} type="button" className="btn btn-primary col-12">Add</button> */}
               </div>
             </div>
+            <br/>
             <div className="row">
               <h5>Arrastrar una imagen desde el escritorio</h5>
               <div className="col-10">
