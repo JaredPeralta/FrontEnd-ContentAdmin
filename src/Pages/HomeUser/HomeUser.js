@@ -35,17 +35,19 @@ return (
     <NavBar />
     <div>
       <h1 className='title'>Home</h1>
-      <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Donec euismod, nisl eget consectetur sagittis, nisl nisi
-      consectetur nisl, euismod nisl nisi euismod nisl.
-      Donec euismod, nisl eget consectetur sagittis, nisl nisi
-      consectetur nisl, euismod nisl nisi euismod nisl.
-      Donec euismod, nisl eget consectetur sagittis, nisl nisi
-      consectetur nisl, euismod nisl nisi euismod nisl.
-      Donec euismod, nisl eget consectetur sagittis, nisl nisi
-      consectetur nisl, euismod nisl nisi euismod nisl.
-      Donec euismod, nisl eget consectetur sagittis, nisl nisi
+      <p className='text'>
+      lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
       <Cards />
     </div>
