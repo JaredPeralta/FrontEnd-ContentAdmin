@@ -10,32 +10,34 @@ const AddModal = (props) => {
   const [add , setAdd] = useState('');
   const [imageDesktop , setImageDesktop] = useState('');
   ///////////////////////////////////////////////////////////////////////////
-  const [file, setFile] = useState(null)
+  //const [file, setFile] = useState(null)
+
+  // const selectedHandler = e => {
+  //   setFile(e.target.files[0])
+  // }
 
   const selectedHandler = e => {
-    setFile(e.target.files[0])
+      var arch=new FileReader();
+      arch.addEventListener('load',leer,false);
+      //console.log(e.target.files[0])
+      arch.readAsDataURL(e.target.files[0]); 
+      //console.log(e.dataTransfer.files[0])
   }
 
-  const sendHandler = () => {
-    if(!file){
-      alert('Seleccione una imagen')
-      return
-    }else{
-      console.log(file)
-      props.list.push({
-        id: props.list.length,
-        image: file
-      })
-      console.log(props.list)
-      props.onHide()
-    }
-
-    const formdata = new FormData()
-    formdata.append('image', file)
-
-    console.log(formdata)
-
-  }
+  // const sendHandler = () => {
+  //   if(!file){
+  //     alert('Seleccione una imagen')
+  //     return
+  //   }else{
+  //     console.log(file)
+  //     props.list.push({
+  //       id: props.list.length,
+  //       image: file
+  //     })
+  //     console.log(props.list)
+  //     props.onHide()
+  //   }
+  // }
 
 
   /////////////////////////////////////////////////////////////////////// Usamos este 
@@ -46,7 +48,8 @@ const AddModal = (props) => {
       ev.preventDefault();
       var arch=new FileReader();
       arch.addEventListener('load',leer,false);
-      arch.readAsDataURL(ev.dataTransfer.files[0]);        
+      arch.readAsDataURL(ev.dataTransfer.files[0]); 
+      console.log(ev.dataTransfer.files[0])       
   }      
 
   const permitirDrop = (ev) => {
@@ -57,13 +60,14 @@ const AddModal = (props) => {
     const el2 = ref.current;
     el2.style.backgroundImage="url('" + ev.target.result + "')";
     setImageDesktop(ev.target.result)
-}
+    console.log(ev.target.result)
+  }
 
   const addImageDesktop = () => {
     if(!imageDesktop){
       swal({
-        title: "Arrastre una imagen al recuadro",
-        //text: "You clicked the button!",
+        title: "Seleccione O arrastre una imagen al recuadro",
+        //text: "You clickd the button!",
         icon: "warning",
         button: "OK",
       });
@@ -130,7 +134,7 @@ const AddModal = (props) => {
 
         <div className="container mt-5">
           <div className="card p-3">
-            <div className="row">
+            {/* <div className="row">
               <h5>Escriba el url de una imagen</h5>
               <div className="col-10">
                 <input onChange={handleChange} className="form-control"></input>
@@ -139,29 +143,31 @@ const AddModal = (props) => {
                 <Button onClick={addImg} className="col-12">Add</Button>
               </div>
             </div>
-            <br/>
-            {/* <div className="row">
+            <br/> */}
+            <div className="row">
               <h5>Seleccione una imagen</h5>
               <div className="col-10">
                 <input id="fileinput" onChange={selectedHandler} className="form-control" type="file"/>
               </div>
               <div className="col-2">
-                <button onClick={sendHandler} type="button" className="btn btn-primary col-12">Add</button>
+                {/* <button onClick={sendHandler} type="button" className="btn btn-primary col-12">Add</button> */}
               </div>
-            </div> */}
+            </div>
+            <br/>
             <div className="row">
               <h5>Arrastrar una imagen desde el escritorio</h5>
               <div className="col-10">
                 <div ref={ref} onDragOver={permitirDrop} onDrop={drop} className="caja" id='caja'></div>
               </div>
-              <div className="col-2">
-                <Button onClick={addImageDesktop} >Add</Button>
-              </div>
+              {/* <div className="col-2">
+                
+              </div> */}
             </div>
           </div>
         </div>
 
       <Modal.Footer>
+        <Button onClick={addImageDesktop} >Add</Button>
         <Button variant='danger' onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>

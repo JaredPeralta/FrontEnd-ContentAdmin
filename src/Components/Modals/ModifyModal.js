@@ -10,6 +10,12 @@ const ModifyModal = (props) => {
 
   const ref = useRef(null);
 
+  const selectedHandler = e => {
+    var arch=new FileReader();
+    arch.addEventListener('load',leer,false);
+    arch.readAsDataURL(e.target.files[0]); 
+}
+
   const drop = (ev) => {
       ev.preventDefault();
       var arch=new FileReader();
@@ -30,7 +36,7 @@ const ModifyModal = (props) => {
   const addImageDesktop = () => {
     if(!imageDesktop){
       swal({
-        title: "Arrastre una imagen al recuadro",
+        title: "Seleccion O arrastre una imagen al recuadro",
         //text: "You clicked the button!",
         icon: "warning",
         button: "OK",
@@ -65,18 +71,29 @@ const ModifyModal = (props) => {
       </Modal.Header>
       <div className="container mt-5">
           <div className="card p-3">
+          <div className="row">
+              <h5>Seleccione una imagen</h5>
+              <div className="col-10">
+                <input id="fileinput" onChange={selectedHandler} className="form-control" type="file"/>
+              </div>
+              <div className="col-2">
+                {/* <button onClick={sendHandler} type="button" className="btn btn-primary col-12">Add</button> */}
+              </div>
+            </div>
+            <br />
             <div className="row">
               <h5>Arrastrar una imagen desde el escritorio</h5>
               <div className="col-10">
                 <div ref={ref} onDragOver={permitirDrop} onDrop={drop} className="caja" id='caja'></div>
               </div>
-              <div className="col-2">
-                <Button onClick={addImageDesktop} >Add</Button>
-              </div>
+              {/* <div className="col-2">
+                
+              </div> */}
             </div>
           </div>
         </div>
       <Modal.Footer>
+        <Button onClick={addImageDesktop} >Add</Button>
         <Button variant='danger' onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
