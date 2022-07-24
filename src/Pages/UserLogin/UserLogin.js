@@ -15,11 +15,6 @@ const UserLogin = () => {
       password: ''
   })
 
-    useEffect(()=>{
-        console.log(process.env)
-    },[])
-
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoginData(await login(data))

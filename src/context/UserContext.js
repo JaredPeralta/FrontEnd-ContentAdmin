@@ -1,5 +1,6 @@
 import React, { createContext , useState } from "react";
 import {URLS} from "../assets/urls";
+import swal from "sweetalert";
 
 
 //export const UserContext = createContext();
@@ -57,18 +58,46 @@ function UserProvider({ children }) {
         })
 
         const loginData = await response.json()
-
+        console.log('login')
+        console.log(loginData)
         if(loginData.error){
             setError(loginData.error)
         }else{
-            console.log(loginData)
             localStorage.setItem('username', JSON.stringify(loginData.user))
             localStorage.setItem('token', loginData.access_token)
             setUsername(loginData.username)
             setToken(loginData.access_token)
         }
-
         return loginData
+    }
+
+    async function register(data){
+        const url = `${API}/users/register`
+
+        const response = await fetch(url,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+
+        const responseData = await response.json()
+        console.log(data)
+        console.log(responseData)
+        if(responseData.error){
+            setError(responseData.error)
+            swal({
+                title: `${responseData.message}`,
+                //text: "You clicked the button!",
+                icon: "warning",
+                button: "OK",
+            });
+        }else{
+            //alerta de creacion correcta
+            login({username: data.username, password: data.password})
+        }
+
     }
 
 
@@ -88,6 +117,7 @@ function UserProvider({ children }) {
                 error,
                 token,
                 login,
+                register,
                 deleteUserData
             }}
         >
