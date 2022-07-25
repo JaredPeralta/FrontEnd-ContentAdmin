@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Card.css'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,8 +7,11 @@ import SeeModal from '../Modals/SeeModal';
 import DeletModal from '../Modals/DeletModal';
 import ModifyModal from '../Modals/ModifyModal';
 import { useState } from 'react'
+import useFetchApi from "../../hooks/useFetchAPI";
 
-const Card = ({ title, lista }) => {
+const Card = ({ title, lista, section }) => {
+
+    const [state, getData, addHomeImage] = useFetchApi()
 
   const [modalAddShow, setModalAddShow] = useState(false);
   const [modalSeeShow, setModalSeeShow] = useState(false);
@@ -38,6 +41,7 @@ const Card = ({ title, lista }) => {
     setimageModify(item.id)
     setModalModifyShow(true);
   }
+
 
   return (
     <>
@@ -75,9 +79,11 @@ const Card = ({ title, lista }) => {
       </div>
 
       <AddModal
-        show={modalAddShow}
-        onHide={() => setModalAddShow(false)}
-        list = {lista}
+          onSubmit={addHomeImage}
+          section={section}
+          show={modalAddShow}
+          onHide={() => setModalAddShow(false)}
+          list = {lista}
       />
 
       <SeeModal
@@ -102,13 +108,6 @@ const Card = ({ title, lista }) => {
         list = {lista}
       />
 
-      {/* <ReusableModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        image={imageRender}
-        list = {lista}
-        imageDelete={imageDelete}
-      /> */}
     </>
     
   )

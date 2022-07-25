@@ -67,16 +67,28 @@ export const cards = [
   }
 ]
 
-const Cards = () => {
+
+
+const Cards = ({data, loading}) => {
   return (
     <Container className='container-cards'>
-      <Row xs={1} md={1} lg={3}>
-        {cards.map((card) => (
-          <Col key={card.id}>
-            <Card title={card.title} lista={card.lista}/>
-          </Col>
-        ))}
-      </Row>
+      {loading ?
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div> :
+          <Row xs={1} md={1} lg={3}>
+            <Col key={'hero'}>
+              <Card title={'Hero'} section={'hero'} lista={data.hero.map(i => ({id: i._id, image: i.image}))}/>
+            </Col>
+            <Col key={'clients'}>
+              <Card title={'Clientes'} section={'clients'} lista={data.clients.map(i => ({id: i._id, image: i.image}))}/>
+            </Col>
+            <Col key={'allies'}>
+              <Card title={'Aliados'} section={'allies'} lista={data.allies.map(i => ({id: i._id, image: i.image}))}/>
+            </Col>
+          </Row>
+      }
+
     </Container>
   )
 }

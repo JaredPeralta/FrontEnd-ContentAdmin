@@ -25,7 +25,7 @@ const local = {
     token: '123'
 }
 
-const API = process.env.REACT_APP_API_DEV
+const API = process.env.REACT_APP_API_PROD
 
 function UserProvider({ children }) {
 

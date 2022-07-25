@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Cards  from '../../Components/Cards/Cards';
 
 
-const HomeUser = () => {
+const HomeUser = (props) => {
 
   // const [file, setFile] = useState(null)
 
@@ -49,7 +49,7 @@ return (
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
-      <Cards />
+      <Cards loading={props.loading} data={props.data}/>
     </div>
   </div>
   </>

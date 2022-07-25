@@ -10,21 +10,17 @@ import PageLoading from "../../Components/PageLoading/PageLoading";
 
 const HomeUserContainer = () => {
 
-    // const [{data, loading, error}, getData] = useFetchApi('/single-assessment/first-assessment', true)
-    const {isAuth, error, loading} = useContext(UserContext)
+    const [{data, loading, error}, getHomeData] = useFetchApi()
+    const {isAuth} = useContext(UserContext)
 
     useEffect(() =>{
-        console.log('antes de entrar a get data')
-        // getData()
+        getHomeData()
+        console.log(loading)
     }, [])
 
 
     if(!isAuth){
         return <Navigate to={'/'} />
-    }
-
-    if(loading){
-        return <PageLoading/>
     }
 
     if(error){
@@ -34,9 +30,7 @@ const HomeUserContainer = () => {
         return error
     }
 
-    return (
-            <HomeUser />
-    )
+    return (<HomeUser loading={loading} data={data}/>)
 }
 
 export default HomeUserContainer
