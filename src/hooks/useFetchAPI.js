@@ -12,59 +12,17 @@ function useFetchApi() {
     error: null
   })
 
-  // async function getData() {
-  //   try {
-  //     const response = await fetch(BASE_URL + endpoint, {
-  //       method: 'GET',
-  //       headers: {
-  //         authorization: isPrivate ? `token ${localStorage.getItem('token')}` : '',
-  //       }
-  //     });
-  //
-  //
-  //     const data = await response.json()
-  //
-  //     if (isPrivate && response.status === 401) {
-  //       await refreshToken()
-  //       return getData()
-  //     } else if (isPrivate && data.error === 'no credentials') {
-  //       deleteUserData()
-  //     }
-  //
-  //
-  //     if (data.error) {
-  //
-  //       setState({
-  //         data: null,
-  //         loading: false,
-  //         error: data.error
-  //       })
-  //     } else {
-  //       setState({
-  //         data,
-  //         loading: false,
-  //         error: null
-  //       })
-  //     }
-  //
-  //   } catch (error) {
-  //     setState({
-  //       data: null,
-  //       loading: false,
-  //     })
-  //   }
-  // }
-
   async function getHomeData(){
       const response = await fetch(`${API}/home`)
       const data = await response.json()
-      console.log(data)
       if(!data.error){
         setState({
           data: data,
           loading: false,
           error: null
         })
+        console.log(data)
+
       }else{
         setState({
           data: null,
@@ -76,9 +34,6 @@ function useFetchApi() {
 
   async function addHomeImage(image){
 
-    console.log(image)
-    // debugger
-    console.log(`Bearer ${token}`)
     const response = await fetch(`${API}/home/upload`,{
       method: 'POST',
       headers: {
@@ -88,23 +43,30 @@ function useFetchApi() {
     })
     const data = await response.json()
 
-
-    console.log(data)
-
+    if(!data.error){
+      getHomeData()
+    }else{
+      console.log(data.message)
+    }
   }
 
   async function deleteHomeImage(id){
     const response = await fetch(`${API}/HOME/${id}`,{
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
     })
-    const data = await response
+    const data = await response.json()
 
     if(!data.error){
       setState({
-        data: data,
+        ...state,
         loading: false,
         error: null
       })
+
+      getHomeData()
     }else{
       setState({
         data: null,
@@ -112,7 +74,27 @@ function useFetchApi() {
         error: data.message
       })
     }
+  }
 
+  async function updateHomeImage(id, image){
+
+    let response = await fetch(`${API}/HOME/${id}`,{
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    })
+
+    let data = await response.json()
+
+    response = await fetch(`${API}/home/upload`,{
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: image
+    })
+    data = await response.json()
 
   }
 

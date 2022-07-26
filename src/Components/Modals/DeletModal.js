@@ -6,16 +6,11 @@ import swal from 'sweetalert';
 const DeletModal = (props) => {
 
   const deleteImg = () => {
-    let contador = 0;
-    props.list.map((val) => {
-      if (val.id === props.delete) {
-        props.list.splice(contador, 1)
-      }
-      contador++;
-    })
+
+    props.onDelete(props.delete)
+
     swal({
       title: "Imagen Eliminada",
-      //text: "You clicked the button!",
       icon: "success",
       button: "OK",
     });

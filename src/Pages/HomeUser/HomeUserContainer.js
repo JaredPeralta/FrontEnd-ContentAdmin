@@ -10,12 +10,11 @@ import PageLoading from "../../Components/PageLoading/PageLoading";
 
 const HomeUserContainer = () => {
 
-    const [{data, loading, error}, getHomeData] = useFetchApi()
+    const [{data, loading, error}, getHomeData, addHomeImage, deleteHomeImage] = useFetchApi()
     const {isAuth} = useContext(UserContext)
 
     useEffect(() =>{
         getHomeData()
-        console.log(loading)
     }, [])
 
 
@@ -30,7 +29,7 @@ const HomeUserContainer = () => {
         return error
     }
 
-    return (<HomeUser loading={loading} data={data}/>)
+    return (<HomeUser loading={loading} data={data} addRegister={addHomeImage} deleteRegister={deleteHomeImage}/>)
 }
 
 export default HomeUserContainer

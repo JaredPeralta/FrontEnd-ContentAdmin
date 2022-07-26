@@ -9,9 +9,9 @@ import ModifyModal from '../Modals/ModifyModal';
 import { useState } from 'react'
 import useFetchApi from "../../hooks/useFetchAPI";
 
-const Card = ({ title, lista, section }) => {
+const Card = ({ title, lista, section, addRegister, deleteRegister }) => {
 
-    const [state, getData, addHomeImage] = useFetchApi()
+    console.log(addRegister)
 
   const [modalAddShow, setModalAddShow] = useState(false);
   const [modalSeeShow, setModalSeeShow] = useState(false);
@@ -79,7 +79,7 @@ const Card = ({ title, lista, section }) => {
       </div>
 
       <AddModal
-          onSubmit={addHomeImage}
+          onSubmit={addRegister}
           section={section}
           show={modalAddShow}
           onHide={() => setModalAddShow(false)}
@@ -99,6 +99,7 @@ const Card = ({ title, lista, section }) => {
         image={imageRender}
         list = {lista}
         delete={imageDelete}
+        onDelete={deleteRegister}
       />
 
       <ModifyModal

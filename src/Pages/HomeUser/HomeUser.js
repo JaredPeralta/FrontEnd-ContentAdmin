@@ -36,20 +36,15 @@ return (
     <div>
       <h1 className='title'>Home</h1>
       <p className='text'>
-      lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Bienvenido! A continuación encontrarás 3 menus sobre los que podrás editar los carruseles de la landing principal de la pagina dsr.com.co
+        en cada uno de ellos podrás añadir una imagen, borrarla o editarla; cada menu esta dirigido al carrusel que se menciona en su titulo. Te recomendamos poner en la imagen el mismo titulo que quieres que tenga cada item del carrusel
       </p>
-      <Cards loading={props.loading} data={props.data}/>
+      <Cards
+          loading={props.loading}
+          data={props.data}
+          addRegister={props.addRegister}
+          deleteRegister={props.deleteRegister}
+      />
     </div>
   </div>
   </>
