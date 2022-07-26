@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
-import { URLS } from "../assets/urls";
+import swal from 'sweetalert';
 
 const API = process.env.REACT_APP_API_PROD
 
@@ -21,7 +21,6 @@ function useFetchApi() {
           loading: false,
           error: null
         })
-        console.log(data)
 
       }else{
         setState({
@@ -45,8 +44,18 @@ function useFetchApi() {
 
     if(!data.error){
       getHomeData()
+      swal({
+            title: "Imagen Agregada",
+            icon: "success",
+            button: "OK",
+          });
     }else{
-      console.log(data.message)
+      swal({
+        title: "Error",
+        text: data.message,
+        icon: "success",
+        button: "OK",
+      });
     }
   }
 
