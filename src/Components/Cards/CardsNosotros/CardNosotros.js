@@ -2,43 +2,44 @@ import React, {useEffect} from 'react'
 import './Card.css'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import AddModal from '../Modals/AddModal';
-import SeeModal from '../Modals/SeeModal';
-import DeletModal from '../Modals/DeletModal';
-import ModifyModal from '../Modals/ModifyModal';
+import SeeModalNosotros from '../../Modals/ModalsNosotros/SeeModalNosotros';
+import AddModalNosotros from '../../Modals/ModalsNosotros/AddModalNosotros';
+import DeletModalNosotros from '../../Modals/ModalsNosotros/DeleteModalNosotros';
+import ModifyModalNosotros from '../../Modals/ModalsNosotros/ModifyModalNosotros';
 import { useState } from 'react'
-import useFetchApi from "../../hooks/useFetchAPI";
+import useFetchApi from "../../../hooks/useFetchAPI";
 
-const Card = ({ title, lista, section }) => {
-
-    const [state, getData, addHomeImage] = useFetchApi()
+const CardNosotros = ({ title, lista }) => {
 
   const [modalAddShow, setModalAddShow] = useState(false);
   const [modalSeeShow, setModalSeeShow] = useState(false);
   const [modalDeletShow, setModalDeletShow] = useState(false);
   const [modalModifyShow, setModalModifyShow] = useState(false);
 
-
   const [imageRender, setimageRender] = useState('');
-  const [imageDelete, setimageDelete] = useState('');
-  const [imageModify, setimageModify] = useState('');
-  const [imageTitle, setimageTitle] = useState('');
-
+  const [elementTitle, setElemetTitle] = useState('');
+  const [elementText, setElementText] = useState('');
+  const [deletCard, setDeletCard] = useState('');
+  const [modifyCard, setModifyCard] = useState('');
 
   const handleView = (item) => {
     setimageRender(item.image)
-    setimageTitle(item.id)
+    setElemetTitle(item.title)
+    setElementText(item.text)
     setModalSeeShow(true);
   }
 
   const handleDelete = (item) => {
-    setimageDelete(item.id)
-    setimageRender(item.image)
+    setDeletCard(item.id)
+    setElemetTitle(item.title)
     setModalDeletShow(true);
   }
 
   const handleModify = (item) => {
-    setimageModify(item.id)
+    setModifyCard(item.id)
+    setimageRender(item.image)
+    setElemetTitle(item.title)
+    setElementText(item.text)
     setModalModifyShow(true);
   }
 
@@ -74,43 +75,42 @@ const Card = ({ title, lista, section }) => {
                   </div>
               </div>
               ))}
-          
         </div>
       </div>
 
-      <AddModal
-          onSubmit={addHomeImage}
-          section={section}
-          show={modalAddShow}
-          onHide={() => setModalAddShow(false)}
-          list = {lista}
-      />
-
-      <SeeModal
+      <SeeModalNosotros
         show={modalSeeShow}
         onHide={() => setModalSeeShow(false)}
         image={imageRender}
-        title={imageTitle}
+        title={elementTitle}
+        text={elementText}
       />
 
-      <DeletModal
+      <AddModalNosotros
+        show={modalAddShow}
+        onHide={() => setModalAddShow(false)}
+        list = {lista}
+      />
+
+      <DeletModalNosotros
         show={modalDeletShow}
         onHide={() => setModalDeletShow(false)}
-        image={imageRender}
+        id={deletCard}
+        title={elementTitle}
         list = {lista}
-        delete={imageDelete}
       />
 
-      <ModifyModal
+      <ModifyModalNosotros
         show={modalModifyShow}
         onHide={() => setModalModifyShow(false)}
-        id={imageModify}
+        id={modifyCard}
+        image={imageRender}
+        title={elementTitle}
+        text={elementText}
         list = {lista}
       />
-
     </>
-    
   )
 }
 
-export default Card
+export default CardNosotros;

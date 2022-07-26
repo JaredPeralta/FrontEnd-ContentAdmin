@@ -5,7 +5,7 @@ import './HomeUser.css'
 //import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Cards  from '../../Components/Cards/Cards';
+import CardsHome  from '../../Components/Cards/CardsHome/CardsHome';
 
 
 const HomeUser = (props) => {
@@ -49,7 +49,7 @@ return (
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
       Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
-      <Cards loading={props.loading} data={props.data}/>
+      <CardsHome loading={props.loading} data={props.data}/>
     </div>
   </div>
   </>
