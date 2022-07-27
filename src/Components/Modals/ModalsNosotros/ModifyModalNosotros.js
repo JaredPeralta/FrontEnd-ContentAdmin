@@ -10,14 +10,23 @@ const ModifyModalNosotros = (props) => {
   const [textCard, setTextCard] = useState('');
   const [imageDesktop , setImageDesktop] = useState('');
 
+
   const ref = useRef(null);
 
   const editTitle = (e) => {
-    setTitleCard(e.target.value)
+    if(e.target.value === ''){
+      setTitleCard(' ');
+    }else{
+      setTitleCard(e.target.value);
+    }
   }
 
   const editText = (e) => {
-    setTextCard(e.target.value)
+    if(e.target.value === ''){
+      setTextCard(' ');
+    }else{
+      setTextCard(e.target.value);
+    }
   }
 
   const selectedHandler = e => {
@@ -44,31 +53,28 @@ const ModifyModalNosotros = (props) => {
   }
 
   const addImageDesktop = () => {
-    if(!imageDesktop || !titleCard || !textCard){
-      swal({
-        title: "Llene todos los campos",
-        //text: "You clicked the button!",
-        icon: "warning",
-        button: "OK",
-      });
-      return
-    }else{
-      props.list.map((val) => {
-        if (val.id === props.id) {
+    props.list.map((val) => {
+      if (val.id === props.id) {
+        if(imageDesktop !== ''){
           val.image = imageDesktop;
+        }
+        if(titleCard !== ''){
           val.title = titleCard;
+        }
+        if(textCard !== ''){
           val.text = textCard;
         }
-      })
-      swal({
-        title: "Tarjera Actualizada",
-        //text: "You clicked the button!",
-        icon: "success",
-        button: "OK",
-      });
-      setImageDesktop('')
-      props.onHide()
-    }
+      }
+    })
+    swal({
+      title: "Tarjera Actualizada",
+      icon: "success",
+      button: "OK",
+    });
+    setImageDesktop('')
+    setTitleCard('')
+    setTextCard('')
+    props.onHide()
   }
 
   return (
@@ -86,14 +92,14 @@ const ModifyModalNosotros = (props) => {
           <div className="card p-3">
             <div className="row">
               <h5>Modifique el titulo</h5>
-              <input type="text" className="form-control" placeholder={props.title} onChange={editTitle}/>
+              <input name='title' type="text" className="form-control" value={titleCard ? titleCard : props.title} onChange={editTitle}/>
             </div>
 
             <br/>
 
             <div className="row">
               <h5>Modifique el texto</h5>
-              <input type="text" className="form-control" placeholder={props.text} onChange={editText}/>
+              <input type="text" className="form-control" value={textCard ? textCard : props.text} onChange={editText} />
             </div>
 
             <br/>
@@ -104,7 +110,6 @@ const ModifyModalNosotros = (props) => {
                 <div className="col-10">
                   <input
                       id="fileinput"
-                      placeholder={props.image}
                       onChange={selectedHandler}
                       name={'image'}
                       className="form-control" type="file"/>
@@ -117,7 +122,7 @@ const ModifyModalNosotros = (props) => {
             <div className="row">
               <h5>Arrastrar una imagen desde el escritorio</h5>
               <div className="col-10">
-                <div ref={ref} onDragOver={permitirDrop} onDrop={drop} className="caja" id='caja'></div>
+                <div ref={ref} onDragOver={permitirDrop} onDrop={drop} className="caja" id='caja' style={{backgroundImage: `url(${props.image})`}}></div>
               </div>
             </div>
           </div>

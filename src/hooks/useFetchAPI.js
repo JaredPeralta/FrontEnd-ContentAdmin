@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { URLS } from "../assets/urls";
 
-const API = process.env.REACT_APP_API_PROD;
+//const API = process.env.REACT_APP_API_PROD;
 
-// const REACT_APP_API_PROD="https://dsrapi-dev.herokuapp.com"
-// const API = REACT_APP_API_PROD;
+const REACT_APP_API_PROD="https://dsrapi-dev.herokuapp.com"
+const API = REACT_APP_API_PROD;
 
 function useFetchApi() {
   const { token, refreshToken, deleteUserData } = useContext(UserContext);
