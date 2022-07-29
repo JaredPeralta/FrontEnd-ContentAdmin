@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
+import './NavBar.css'
 
 
 const NavBar = () => {
@@ -11,9 +12,18 @@ const NavBar = () => {
         <Container>
           {/* <Navbar.Brand href="/home">Navbar</Navbar.Brand> */}
           <Nav className="me-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="#features">Servicios</Nav.Link>
-            <Nav.Link href="#pricing">Nosotros</Nav.Link>
+            <Nav.Link>
+              <Link to="/home">
+                <h5>Home</h5>
+              </Link>
+            </Nav.Link>
+            
+            {/* <Nav.Link href="#features">Servicios</Nav.Link> */}
+            <Nav.Link>
+              <Link to="/nosotros">
+                <h5>Nosotros</h5>
+              </Link>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>

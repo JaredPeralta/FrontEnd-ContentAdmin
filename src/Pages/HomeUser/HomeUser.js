@@ -5,7 +5,7 @@ import './HomeUser.css'
 //import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Cards  from '../../Components/Cards/Cards';
+import CardsHome  from '../../Components/Cards/CardsHome/CardsHome';
 
 
 const HomeUser = (props) => {
@@ -36,15 +36,20 @@ return (
     <div>
       <h1 className='title'>Home</h1>
       <p className='text'>
-      Bienvenido! A continuación encontrarás 3 menus sobre los que podrás editar los carruseles de la landing principal de la pagina dsr.com.co
-        en cada uno de ellos podrás añadir una imagen, borrarla o editarla; cada menu esta dirigido al carrusel que se menciona en su titulo. Te recomendamos poner en la imagen el mismo titulo que quieres que tenga cada item del carrusel
+      lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </p>
-      <Cards
-          loading={props.loading}
-          data={props.data}
-          addRegister={props.addRegister}
-          deleteRegister={props.deleteRegister}
-      />
+      <CardsHome loading={props.loading} data={props.data}/>
     </div>
   </div>
   </>

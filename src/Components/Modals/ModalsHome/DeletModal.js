@@ -2,8 +2,16 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import swal from 'sweetalert';
+import useFetchApi from "../../../hooks/useFetchAPI";
+import { useEffect } from 'react';
 
 const DeletModal = (props) => {
+  const [{data, loading, error}, deleteHomeImage] = useFetchApi()
+
+    useEffect(() =>{
+        deleteHomeImage()
+        //console.log(loading)
+    }, [])
 
   const deleteImg = () => {
 

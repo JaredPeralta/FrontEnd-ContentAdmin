@@ -67,7 +67,7 @@ const AddModal = (props) => {
     //     button: "OK",
     //   });
     //   setImageDesktop('')
-    props.onHide()
+    //   props.onHide()
     // }
   }
 

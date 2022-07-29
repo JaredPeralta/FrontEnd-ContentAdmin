@@ -1,5 +1,6 @@
 import React from 'react'
 import CardNosotros from './CardNosotros'
+import CardContacto from './CardContacto';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -28,23 +29,51 @@ export const cards = [
       },
     ]
   },
-  
-  { 
-    lista: [
+]
+
+const contacto = [
+  {
+    direcciones: [
       {
         id: 1,
-        image: 'https://picsum.photos/id/204/200/300'
+        direccion: 'Calle falsa 123',
+        ciudad: 'Ciudad falsa',
+        pais: 'Pais falso',
+        codigoPostal: '12345'
       },
       {
         id: 2,
-        image: 'https://picsum.photos/id/211/200/300'
+        direccion: 'Calle falsa 123',
+        ciudad: 'Ciudad falsa',
+        pais: 'Pais falso',
+        codigoPostal: '12345'
+      }
+    ],
+    telefonos: [
+      {
+        id: 1,
+        telefono: '123456789',
+        extension: '123'
       },
       {
-        id: 3,
-        image: 'https://picsum.photos/id/206/200/300'
+        id: 2,
+        telefono: '123456789',
+        extension: '123'
+      }
+    ],
+    emails: [
+      {
+        id: 1,
+        email: 'asdasdas@gmai.com',
+        tipo: 'principal'
       },
-    ]
-  },
+      {
+        id: 2,
+        email: '1234@gmail.com',
+        tipo: 'secundario'
+      }
+    ],
+  }
 ]
 
 
@@ -60,7 +89,7 @@ const CardsNosotros = ({ data, loading }) => {
               <CardNosotros title={'Tarjetas'} section={'tarjetas'} lista={cards[0].lista}/>
             </Col>
             <Col key={'contacto'}>
-              <CardNosotros title={'Contacto'} section={'contacto'} lista={cards[1].lista}/>
+              <CardContacto title={'Contacto'} section={'contacto'} lista={contacto}/>
             </Col>
         </Row>
       }
