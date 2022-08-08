@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { useState , useRef } from 'react';
 import swal from 'sweetalert';
 
-const ModifyModalNosotros = (props) => {
+const ModifyModalServicios = (props) => {
 
   const [titleCard, setTitleCard] = useState('');
   const [textCard, setTextCard] = useState('');
@@ -136,4 +136,4 @@ const ModifyModalNosotros = (props) => {
   )
 }
 
-export default ModifyModalNosotros
+export default ModifyModalServicios;

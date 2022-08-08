@@ -2,7 +2,8 @@ import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import swal from 'sweetalert';
 
-const API = process.env.REACT_APP_API_PROD
+//const API = process.env.REACT_APP_API_PROD
+const API = 'https://dsrapi-dev.herokuapp.com'
 
 function useFetchApi() {
   const { token, refreshToken, deleteUserData } = useContext(UserContext);

@@ -10,7 +10,6 @@ const NavBar = () => {
   return (
     <Navbar bg="light" variant="light">
         <Container>
-          {/* <Navbar.Brand href="/home">Navbar</Navbar.Brand> */}
           <Nav className="me-auto">
             <Nav.Link>
               <Link to="/home">
@@ -18,26 +17,20 @@ const NavBar = () => {
               </Link>
             </Nav.Link>
             
-            {/* <Nav.Link href="#features">Servicios</Nav.Link> */}
             <Nav.Link>
               <Link to="/nosotros">
                 <h5>Nosotros</h5>
               </Link>
             </Nav.Link>
+
+            <Nav.Link>
+              <Link to="/servicios">
+                <h5>Servicios</h5>
+              </Link>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
-    // <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-    //   <Container>
-    //     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    //     <Navbar.Collapse id="responsive-navbar-nav">
-    //       <Nav className="me-auto">
-    //         <Link to="/">Home</Link>
-    //         <Link to="/nosotros">Nosotros</Link>
-    //       </Nav>
-    //     </Navbar.Collapse>
-    //   </Container>
-    // </Navbar>
   )
 }
 

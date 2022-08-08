@@ -2,12 +2,12 @@ import React, {useEffect} from 'react'
 import './Card.css'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import AddModal from '../Modals/AddModal';
-import SeeModal from '../Modals/SeeModal';
-import DeletModal from '../Modals/DeletModal';
-import ModifyModal from '../Modals/ModifyModal';
+import AddModal from '../../Modals/ModalsHome/AddModal';
+import SeeModal from '../../Modals/ModalsHome/SeeModal';
+import DeletModal from '../../Modals/ModalsHome/DeletModal';
+import ModifyModal from '../../Modals/ModalsHome/ModifyModal';
 import { useState } from 'react'
-import useFetchApi from "../../hooks/useFetchAPI";
+import useFetchApi from "../../../hooks/useFetchAPI";
 
 const Card = ({ title, lista, section, addRegister, deleteRegister }) => {
 

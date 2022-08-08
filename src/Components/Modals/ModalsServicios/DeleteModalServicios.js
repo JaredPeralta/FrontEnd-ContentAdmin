@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import useFetchApi from "../../../hooks/useFetchAPI";
 import { useEffect } from 'react';
 
-const DeletModal = (props) => {
+const DeleteModalServicios = (props) => {
   const [{data, loading, error}, deleteHomeImage] = useFetchApi()
 
     useEffect(() =>{
@@ -14,9 +14,16 @@ const DeletModal = (props) => {
     }, [])
 
   const deleteImg = () => {
-    props.onDelete(props.delete)
+    let contador = 0;
+    props.list.map((val) => {
+      if (val.id === props.id) {
+        props.list.splice(contador, 1)
+      }
+      contador++;
+    })
     swal({
-      title: "Imagen Eliminada",
+      title: "Servicio Eliminada",
+      //text: "You clicked the button!",
       icon: "success",
       button: "OK",
     });
@@ -33,15 +40,15 @@ const DeletModal = (props) => {
       <Modal.Header closeButton>
       </Modal.Header>
       <Modal.Body>
-        <h4>Desea borrar la imagen?</h4>
-        <img src={props.image}></img>
+        <h4>{`Desea borrar el servicio ${props.title}?`}</h4>
+        {/* <img src={props.image}></img> */}
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={deleteImg}>Borrar Imagen </Button>
+        <Button onClick={deleteImg}>Borrar Tarjeta </Button>
         <Button variant='danger' onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   )
 }
 
-export default DeletModal
+export default DeleteModalServicios;

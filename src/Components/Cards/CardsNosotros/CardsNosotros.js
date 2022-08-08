@@ -37,40 +37,32 @@ const contacto = [
       {
         id: 1,
         direccion: 'Calle falsa 123',
-        ciudad: 'Ciudad falsa',
-        pais: 'Pais falso',
-        codigoPostal: '12345'
-      },
-      {
-        id: 2,
-        direccion: 'Calle falsa 123',
-        ciudad: 'Ciudad falsa',
-        pais: 'Pais falso',
-        codigoPostal: '12345'
-      }
-    ],
-    telefonos: [
-      {
-        id: 1,
-        telefono: '123456789',
-        extension: '123'
-      },
-      {
-        id: 2,
-        telefono: '123456789',
-        extension: '123'
       }
     ],
     emails: [
       {
         id: 1,
         email: 'asdasdas@gmai.com',
-        tipo: 'principal'
+      }
+    ],
+    pbx: [
+      {
+        id: 1,
+        numero: '55555555555',
       },
       {
         id: 2,
-        email: '1234@gmail.com',
-        tipo: 'secundario'
+        numero: '66666666666',
+      }
+    ],
+    telefonos: [
+      {
+        id: 1,
+        telefono: '123456789',
+      },
+      {
+        id: 2,
+        telefono: '987654321',
       }
     ],
   }

@@ -53,7 +53,7 @@ const CardNosotros = ({ title, lista }) => {
               <button className='btn btn-primary' onClick={() => setModalAddShow(true)}>Agregar</button>
             </Col>
             <Col md="7">
-              <h5 className='card-title'>{title}</h5>
+              <h3 className='card-title'>{title}</h3>
             </Col>
           </Row>
           <br />
