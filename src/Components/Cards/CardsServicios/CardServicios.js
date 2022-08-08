@@ -18,6 +18,9 @@ const CardServicios = ({lista}) => {
   const [imageRender, setimageRender] = useState('');
   const [elementText, setElementText] = useState('');
   const [modifyCard, setModifyCard] = useState('');
+  const [subServicios, setSubServicios] = useState([]);
+
+  const [decision, setDecision] = useState(false);
 
   const handleModify = (item) => {
     setModifyCard(item.id)
@@ -33,6 +36,17 @@ const CardServicios = ({lista}) => {
     setModalDeleteShow(true);
   }
 
+  const handleAdd = (item) => {
+    if (item) {
+      setDecision(true)
+      setSubServicios(item.subServicios)
+      setModalAddShow(true)
+    }else{
+      setDecision(false)
+      setModalAddShow(true)
+    }
+  }
+
   return (
     <>
       <Row xs={1} md={2} lg={3}>
@@ -41,8 +55,14 @@ const CardServicios = ({lista}) => {
         <div key={card.id} className='card card-personalizada'>
           <div className='card'>
             <div className='card-body'>
-              <button type='button' className='btn btn-outline-warning' onClick={() => handleModify(card)}>Actualizar</button>
-              <button type='button' className='btn btn-outline-danger' onClick={() => handleDelete(card)}>Eliminar</button>
+              <button type='button' className='btn btn-outline-warning' onClick={() => {
+                                                                                        setDecision(false)                
+                                                                                        handleModify(card)
+                                                                                        }}>Actualizar</button>
+              <button type='button' className='btn btn-outline-danger' onClick={() => {
+                                                                                        setDecision(false)
+                                                                                        handleDelete(card)
+                                                                                        }}>Eliminar</button>
             </div>
           </div>
           <div className='card-body'>
@@ -51,13 +71,32 @@ const CardServicios = ({lista}) => {
             </div>
             <div className='card-servicios-body'>
               <div key={card.id} className='card-servicios-item'>
-                {/* <img src={card.image} alt={card.title} /> */}
                 <div className="caja-servicios" id='caja' style={{backgroundImage: `url(${card.image})`}}></div>
                 <p className='card-servicios-item-text'>{card.text}</p>
+                <>
+                  {card.subServicios.length > 0 ? card.subServicios.map(sub => (
+                    <div key={sub.id} className='card'>
+                      <h3 className='card-servicios-item-title'>{sub.title}</h3>
+                      <div className="caja-servicios" id='caja' style={{backgroundImage: `url(${sub.image})`}}></div>
+                      <p className='card-servicios-item-text'>{sub.text}</p>
+                      <button type='button' className='btn btn-outline-warning' onClick={() => {
+                                                                                                setDecision(true) 
+                                                                                                setSubServicios(card.subServicios)   
+                                                                                                handleModify(sub)
+                                                                                                }}>Actualizar Subservicio</button>
+                      <button type='button' className='btn btn-outline-danger' onClick={() => {
+                                                                                                setDecision(true)  
+                                                                                                setSubServicios(card.subServicios)                                           
+                                                                                                handleDelete(sub)
+                                                                                                }}>Eliminar Subservicio</button>
+                    </div>
+                  )) : null}
+                </>
               </div>  
             </div> 
           </div>
         </div>
+        <button type='button' className='btn btn-outline-primary' onClick={() => handleAdd(card)}>Agregar Sub-servicio</button>
         </Col>
       ))}
       <Col key='Add'>
@@ -67,7 +106,7 @@ const CardServicios = ({lista}) => {
           </div>
           <div className='card-servicios-body'>
             <div key='Add' className='card-servicios-item'>
-              <button className='btn btn-primary' onClick={() => setModalAddShow(true)}>
+              <button className='btn btn-primary' onClick={() => handleAdd()}>
                 <img src='https://img1.freepng.es/20180320/uie/kisspng-plus-and-minus-signs-computer-icons-clip-art-plus-icon-pictures-5ab0d377911394.4045436415215379115942.jpg' alt='Agregar Servicio' />
               </button>
             </div>  
@@ -79,7 +118,7 @@ const CardServicios = ({lista}) => {
       <AddModalServicios 
         show={modalAddShow}
         onHide={() => setModalAddShow(false)}
-        list = {lista}
+        list = {decision ? subServicios : lista}
       />
 
       <DeleteModalServicios
@@ -87,7 +126,8 @@ const CardServicios = ({lista}) => {
         onHide={() => setModalDeleteShow(false)}
         id={deletCard}
         title={elementTitle}
-        list = {lista}
+        list = {decision ? subServicios : lista}
+        decision = {decision}
       />
 
       <ModifyModalServicios
@@ -97,9 +137,8 @@ const CardServicios = ({lista}) => {
         image={imageRender}
         title={elementTitle}
         text={elementText}
-        list = {lista}
+        list = {decision ? subServicios : lista}
       />
-
     </>
   )
 }

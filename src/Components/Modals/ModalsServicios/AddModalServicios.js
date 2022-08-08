@@ -69,7 +69,8 @@ const AddModalServicios = (props) => {
         id: props.list.length+1,
         image: imageDesktop,
         title: titleCard,
-        text: textCard
+        text: textCard,
+        subServicios : []
       })
       swal({
         title: "Tarjeta Agregada",

@@ -11,19 +11,33 @@ const CardsServicios = ({ data, loading }) => {
       id: 1,
       image: 'https://picsum.photos/id/201/200/300',
       title: 'Sistemas de seguridad',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      subServicios: [
+        {
+          id: 1,
+          image: 'https://picsum.photos/id/201/200/300',
+          title: 'Subservicio 1',
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+        }
+      ]
     },
     {
       id: 2,
       image: 'https://picsum.photos/id/204/200/300',
       title: 'Soporte Integral',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      subServicios: [
+        
+      ]
     },
     {
       id: 3,
       image: 'https://picsum.photos/id/211/200/300',
       title: 'Servicio Tecnico',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      subServicios: [
+        
+      ]
     }
   ]
   return (
